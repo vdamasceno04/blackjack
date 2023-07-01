@@ -24,11 +24,10 @@ class Baralho{
         return this.stack.length;
     }
      clear() {
-        document.write("The stack is cleared..!" + "<br>");
-        this.stkArr = [];
+        this.stack = [];
      }
   }
-
+/*
   let baralho = new Baralho();
   baralho.add(1);
   baralho.add(2);
@@ -36,4 +35,4 @@ class Baralho{
   baralho.add(4);
   baralho.add(5);
   console.log(baralho);
-
+*/
