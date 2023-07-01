@@ -3,9 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+    <title>Cadastro</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      form {
+        display: inline-block;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 250px;
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cadastro</h1>
+    <form id="registrationForm">
+      <label for="username">Usuário:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Cadastrar">
+    </form>
+
+    <div id="message" class="error-message"></div>
+
+    <script>
+      const registrationForm = document.getElementById('registrationForm');
+      const usernameField = document.getElementById('username');
+      const emailField = document.getElementById('email');
+      const passwordField = document.getElementById('password');
+      const messageDiv = document.getElementById('message');
+
+      registrationForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = usernameField.value;
+        const email = emailField.value;
+        const password = passwordField.value;
+
+        if (username === '' || email === '' || password === '') {
+          showMessage('Preencha todos os campos.');
+        } else {
+          showMessage('Cadastro realizado com sucesso!', 'success');
+          registrationForm.reset();
+          setTimeout(function() {
+            window.location.href = 'jogo.html';
+          }, 2000); // Redirecionar após 2 segundos (ajuste conforme necessário)
+        }
+      });
+
+      function showMessage(message, type = 'error') {
+        messageDiv.textContent = message;
+
+        if (type === 'error') {
+          messageDiv.style.color = 'red';
+        } else if (type === 'success') {
+          messageDiv.style.color = 'green';
+        }
+      }
+    </script>
+  </body>
+  </html>
