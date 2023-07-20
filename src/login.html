@@ -34,7 +34,12 @@
     }
   </style>
   <script>
+    function getName(){
+      const name = document.getElementById("username");
+      console.log(name); 
+    }
     function redirectToPage() {
+      getName();
       // Aqui você pode redirecionar o usuário para outra página
       window.location.href = "jogo.html";
     }
