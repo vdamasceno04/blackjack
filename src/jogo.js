@@ -2,62 +2,65 @@ function testeprint(a){
     a.innerText = "gameplay";
 }
 
-class Baralho{
+class Deck{
     constructor() {
-        this.stack = [];
+        this.deck = [];
      }
-     add(carta) {
-        return this.stack.push(carta);
+     add(card) {
+        return this.deck.push(card);
      }
      remove() {
-        if (this.stack.length > 0) {
-            stack.pop();
+        if (this.deck.length > 0) {
+            deck.pop();
         }
      }
      peek() {
-        return (this.stack[this.stkArr.length - 1]);
+        return (this.deck[this.stkArr.length - 1]);
      }
      isEmpty() {
-        return this.stack.length == 0;
+        return this.card.length == 0;
      }
      print(){
-        for(var i = 0; i<this.stack.length; i++)
-            console.log(this.stack[i].carta);
+        for(var i = 0; i<this.deck.length; i++)
+            console.log(this.deck[i].card);
      }
      size() {
-        return this.stack.length;
+        return this.deck.length;
     }
      clear() {
-        this.stack = [];
+        this.deck = [];
     }
 }
 
-class Carta{
-    constructor(v, n){ //valor da carta e naipe, respectivamente
-        this.naipe = n;
-        this.valor = v;
-        this.carta = v+n;
+class Card{
+    constructor(v, n){ //value and suit
+        this.suit = n;
+        this.value = v;
+        this.card = v+n;
     }
     print(){
-        console.log(this.carta);
+        console.log(this.card);
     }
-
-
 }
-  let baralho = new Baralho();
+
+class Player{
+    constructor(){
+    }
+}
+  let deck = new Deck();
 
   for(var i=0; i<3; i++){
     for(var j=1; j<=13; j++){
         if(i == 0)
-            var n = 'C';
+            var n = 'H'; //heart
         else if(i == 1)
-            var n = 'E';
+            var n = 'S'; //spade
         else if(i==2)
-            var n = 'P';
+            var n = 'C'; //club
         else
-            var n = 'O';
+            var n = 'D'; //diamond
         var v = j.toString();
-        baralho.add(new Carta(v, n));
+        deck.add(new Card(v, n));
     }   
   }
-  baralho.print();
+  deck.print();
