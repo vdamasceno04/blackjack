@@ -8,18 +8,18 @@ class Deck{
         return this.deck.push(card);
      }
      remove() {
-        if (this.deck.length > 0) {
-            deck.pop();
+        if (this.size() > 0) {
+            return this.deck.pop();
         }
      }
      peek() {
-        return (this.deck[this.stkArr.length - 1]);
+        return (this.deck[this.size() - 1]);
      }
      isEmpty() {
         return this.deck.length == 0;
      }
      print(){
-        for(var i = 0; i<this.deck.length; i++){
+        for(var i = 0; i<this.size(); i++){
             console.log(this.deck[i].card);
         }
      }
@@ -52,6 +52,11 @@ class Deck{
             this.deck[i] = this.deck[j];
             this.deck[j] = aux;
         }
+    }
+    deal(){
+        var card = this.peek();
+        this.remove();
+        return card;
     }
 }
 module.exports = Deck;

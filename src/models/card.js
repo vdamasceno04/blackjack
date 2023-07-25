@@ -8,5 +8,6 @@ class Card{
         console.log(this.card);
     }
     getValue(){return this.value;}
+    getCard(){return this.card;}
 }
 module.exports = Card;

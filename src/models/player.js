@@ -10,8 +10,11 @@ class Player{
     receive(c){
         this.hand.push(c);
     }
+    size(){
+        return this.hand.length;
+    }
     setCount(){
-        for(i=0; i<this.hand.length; i++){
+        for(var i=0; i<this.hand.length; i++){
             var aux = this.hand[i].getValue();
             if(this.count <= 10 && aux == 1)
                 this.count += 11;
@@ -26,4 +29,10 @@ class Player{
         if(this.getCount() > 21)
             return true;
     }
+    printHand(){
+        for(var i=0; i<this.size(); i++){
+            console.log(this.hand[i].getCard());
+        }
+    }
 }
+module.exports = Player;
