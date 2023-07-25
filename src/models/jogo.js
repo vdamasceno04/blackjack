@@ -1,5 +1,5 @@
 const Deck = require('./deck.js');
-const Participant = require('./participant.js');
+const Participant = require('./participant/participant.js');
 
 function testeprint(a){
     a.innerText = "gameplay";
