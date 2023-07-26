@@ -12,10 +12,10 @@
     });
  };
 
- export const createUser = (req, res) => {
+ export const createUser = (_, res) => {
     console.log("caiu create");
 
-    const q = "INSERT INTO players(nome, login, senha, id, nascimento, sexo) VALUES(?)";
+    const q = "INSERT INTO players(nome, login, senha, id, money) VALUES(?)";
 
    /*const info = [
         req.body.nome,
@@ -26,7 +26,7 @@
         req.body.sexo
     ];*/
 
-    const info = ['pedro', 'pedrop', 'pedrop24', '5', '2003-10-25', 'M'];
+    const info = ['pedro', 'pedrop', 'pedrop24', '6', '69'];
 
     db.query(q, [info], (err) => {
         if(err) return res.json(err);
@@ -37,6 +37,7 @@
 
 
 export const updateUser = (req, res) =>{
+    console.log("caiu update");
     const q = "UPDATE players SET nome = ?, login = ?, senha = ?, nascimento = ?, sexo = ? WHERE id = ?";
 
     /*const info = [
