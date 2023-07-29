@@ -1,20 +1,26 @@
  import { db } from "../db.js";
 
- export const readUser = (_, res) => {
-    const q = "SELECT * FROM players";
+ export const readUser = () => {
+    console.log("um");
+   return new Promise((resolve, reject) => {
+     const q = "SELECT * FROM players";
+     console.log("dois")
+     db.query(q, (err, data) => {
+       if (err) {
+         reject(err); // If there's an error, reject the Promise with the error object
+       } else {
+        console.log("tres")
 
-    console.log("caiu read");
-
-    db.query(q, (err, data) => {
-        if (err) return res.json(err);
-        
-        return res.status(200).json(data);
-    });
+         resolve(data); // If successful, resolve the Promise with the query result (data)
+       }
+     });
+   });
  };
+ 
 
  export const createUser = (_, res) => {
     console.log("caiu create");
-
+    return new Promise((resolve, reject) => {
     const q = "INSERT INTO players(nome, login, senha, id, money) VALUES(?)";
 
    /*const info = [
@@ -29,10 +35,11 @@
     const info = ['pedro', 'pedrop', 'pedrop24', '6', '69'];
 
     db.query(q, [info], (err) => {
-        if(err) return res.json(err);
+        if(err) reject(err);
 
-        return res.status(200).json("usuario criado com sucesso");
+        return resolve("usuario criado com sucesso");
     });
+    })
  };
 
 
