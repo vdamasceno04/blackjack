@@ -7,11 +7,9 @@ export const app = express();
 app.use(express.json());
 app.use(cors());
 
-//app.use("/", router);
 app.get("/", router);
 app.post("/", router);
 app.put("/", router);
 app.delete("/", router);
-//app.post("/", router);
 
 app.listen(3300);
