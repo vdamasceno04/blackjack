@@ -18,6 +18,7 @@ router.route('/')
         res.status(500).json({ error: "An error occurred while fetching data." });
     }
     })
+
     .post(async (req, res) =>{
         console.log("caiu no .post");
         try {
@@ -33,6 +34,32 @@ router.route('/')
     } catch (err) {
         res.status(500).json({ error: "An error occurred while fetching data." });
     }
+    })
+
+    .put(async (req, res) => {
+    console.log("caiu no .put")
+    try {
+        req.body.nome = "mauro";
+        req.body.login = "mauroido";
+        req.body.senha = "mauroido24";
+        req.body.id = 6;
+        req.body.money = 4;
+        updateUser(req);
+        res.status(200).json("foi")
+    } catch (err){
+        res.status(500).json({error: "An error occurred while fetching data."});
+    }
+    })
+
+    .delete(async (req, res) => {
+        console.log("caiu no .del")
+        try{
+            req.body.id = 6
+            deleteUser(req)
+            res.status(200).json("foi")
+        } catch(err){
+            res.status(500).json({error: "An error occurred while fetching data."})
+        }
     })
 //router.route('/:id')
 
