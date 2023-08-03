@@ -10,16 +10,26 @@ const router = express.Router();
 router.route('/')
     .get(async (req, res) => {
     try {
+        console.log("caiu no .get");
         const users = await readUser(); // Call the readUser function to fetch data from the database
+        console.log(users);
         res.status(200).json(users); // Send the data as a JSON response
     } catch (err) {
         res.status(500).json({ error: "An error occurred while fetching data." });
     }
     })
     .post(async (req, res) =>{
-    try {
-        const pao = await createUser();
-        res.status(200).json(pao); // Send the data as a JSON response
+        console.log("caiu no .post");
+        try {
+        req.body.nome = "mauro";
+        req.body.login = "mauroido";
+        req.body.senha = "mauroido24";
+        req.body.id = 6;
+        req.body.money = 5;
+//        const answer = await createUser(req);
+            createUser(req);
+     //       res.status(200).json(answer); //doesnt get answer properly
+            res.status(200).json("foi"); 
     } catch (err) {
         res.status(500).json({ error: "An error occurred while fetching data." });
     }
