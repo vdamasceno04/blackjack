@@ -15,7 +15,6 @@
  
 
  export const createUser = (req, res) => { //WORKS, NEED TO SOLVE "RESOLVE"
-    console.log("caiu create");
     return new Promise((resolve, reject) => {
     const q = "INSERT INTO players(name, login, senha, id, money) VALUES(?)";
 
@@ -37,12 +36,11 @@
 
 
 export const updateUser = (req, res) =>{ //WORKS, NEED TO SOLVE "RESOLVE"
-    console.log("caiu update");
     return new Promise((resolve, reject) => {
       const q = 'UPDATE players SET name = ?, login = ?, senha = ?, id = ?, money = ? WHERE id = ?';
   
-    const userid = req.body.id;
-     const info = [
+      const userid = req.body.id;
+      const info = [
           req.body.nome,
           req.body.login,
           req.body.senha,

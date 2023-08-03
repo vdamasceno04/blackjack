@@ -10,10 +10,8 @@ const router = express.Router();
 router.route('/')
     .get(async (req, res) => {
     try {
-        console.log("caiu no .get");
         const users = await readUser(); // Call the readUser function to fetch data from the database
-        console.log(users);
-        res.status(200).json(users); // Send the data as a JSON response
+        res.status(200).json(users); //get all of that from user
     } catch (err) {
         res.status(500).json({ error: "An error occurred while fetching data." });
     }
@@ -26,37 +24,35 @@ router.route('/')
         req.body.login = "mauroido";
         req.body.senha = "mauroido24";
         req.body.id = 6;
-        req.body.money = 5;
+        req.body.money = 5; //get all of that from user
 //        const answer = await createUser(req);
-            createUser(req);
+        createUser(req);
      //       res.status(200).json(answer); //doesnt get answer properly
-            res.status(200).json("foi"); 
+        res.status(200).json("Created user sucessfully."); 
     } catch (err) {
         res.status(500).json({ error: "An error occurred while fetching data." });
     }
     })
 
     .put(async (req, res) => {
-    console.log("caiu no .put")
     try {
         req.body.nome = "mauro";
         req.body.login = "mauroido";
         req.body.senha = "mauroido24";
         req.body.id = 6;
-        req.body.money = 4;
+        req.body.money = 4; //get all of that from user
         updateUser(req);
-        res.status(200).json("foi")
+        res.status(200).json("Update user sucessfully.")
     } catch (err){
         res.status(500).json({error: "An error occurred while fetching data."});
     }
     })
 
     .delete(async (req, res) => {
-        console.log("caiu no .del")
         try{
-            req.body.id = 6
+            req.body.id = 6 //get from user
             deleteUser(req)
-            res.status(200).json("foi")
+            res.status(200).json("Deleted user sucessfully.")
         } catch(err){
             res.status(500).json({error: "An error occurred while fetching data."})
         }
