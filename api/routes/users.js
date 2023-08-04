@@ -50,7 +50,6 @@ router.route('/')
 
     .delete(async (req, res) => {
         try{
-            req.body.id = 6 //get from user
             deleteUser(req)
             res.status(200).json("Deleted user sucessfully.")
         } catch(err){

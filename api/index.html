@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client</title>
+</head>
+<body>
+  <button onclick="createUser()">Create </button>
+  <button onclick="deleteUser()">Delete </button>
+  <button onclick="updateUser()">Update </button>
+  <script>
+    function createUser() {
+      const data = {
+        // Your data to be sent in the POST request body
+        name: "John Doe",
+        email: "john@example.com",
+      };
+
+      fetch("http://localhost:3300", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response from server:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    };
+    function deleteUser() {
+        const data = {
+            id: 6 
+        };
+        
+        fetch("http://localhost:3300", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log("Response from server:", data);
+        })
+        .catch((error) => {
+        console.error("Error:", error);
+        });
+    };
+    function updateUser(){
+        const data = {
+            name: "blabla"
+        };
+        
+        fetch("http://localhost:3300", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log("Response from server:", data);
+        })
+        .catch((error) => {
+        console.error("Error:", error);
+        });};
+    
+  </script>
+</body>
+</html>
