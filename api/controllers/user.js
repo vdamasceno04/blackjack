@@ -1,6 +1,6 @@
  import { db } from "../db.js";
 
- export const readUser = () => { //DONE
+ export const readUsers = () => { //DONE
    return new Promise((resolve, reject) => {
      const q = "SELECT * FROM players";
      db.query(q, (err, data) => {
@@ -13,6 +13,20 @@
    });
  };
  
+export const readUser = (req) => { //DONE
+  return new Promise((resolve, reject) => {
+    const q = "SELECT * FROM players WHERE id = ?";
+    const info = req.params.id;
+    console.log("Buscando")
+    db.query(q, info,(err, data) => {
+      if (err) {
+        reject(err); // If there's an error, reject the Promise with the error object
+      } else {
+        resolve(data); // If successful, resolve the Promise with the query result (data)
+      }
+    });
+  });
+};
 
  export const createUser = (req, res) => { //WORKS, NEED TO SOLVE "RESOLVE"
     return new Promise((resolve, reject) => {

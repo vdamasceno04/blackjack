@@ -1,16 +1,12 @@
 import express from "express";
-import { readUser, createUser, updateUser, deleteUser } from "../controllers/user.js"; 
+import { readUsers, readUser, createUser, updateUser, deleteUser } from "../controllers/user.js"; 
 
 const router = express.Router();
 
-//router.delete("/:id", deleteUser); //D
-//router.put("/:id", updateUser); //U
-//router.post("/", createUser); //C
-//router.get("/", readUser); //R
 router.route('/')
     .get(async (req, res) => {
     try {
-        const users = await readUser(); // Call the readUser function to fetch data from the database
+        const users = await readUsers(); // Call the readUser function to fetch data from the database
         res.status(200).json(users); //get all of that from user
     } catch (err) {
         res.status(500).json({ error: "An error occurred while fetching data." });
@@ -56,6 +52,15 @@ router.route('/')
             res.status(500).json({error: "An error occurred while fetching data."})
         }
     })
-//router.route('/:id')
+    
+router.route('/:id')
+    .get(async (req, res) => {
+        try {
+            const users = await readUser(); // Call the readUser function to fetch data from the database
+            res.status(200).json(users); //get all of that from user
+        } catch (err) {
+            res.status(500).json({ error: "An error occurred while fetching data." });
+        }
+        })
 
 export default router;

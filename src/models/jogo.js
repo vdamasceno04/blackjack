@@ -1,17 +1,16 @@
 const Deck = require('./deck.js');
 //const UnregisteredPlayer = require('./participant/player/unregisteredplayer.js');
-const RegisteredPlayer = require('./participant/player/registeredplayer.js');
-
+//const RegisteredPlayer = require('./participant/player/registeredplayer.js');
+const Player = require('./participant/player/player.js');
 
 function testeprint(a){
     a.innerText = "gameplay";
 }
 
 let deck = new Deck();
-let p1 = new RegisteredPlayer();
+let p1 = new Player();
 deck.generate();
 deck.shuffle();
-p1.fetchMoney();
 p1.getMoney();
 /*
 console.log("receba");
