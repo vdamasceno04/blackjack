@@ -7,7 +7,9 @@
   <button onclick="createUser()">Create </button>
   <button onclick="deleteUser()">Delete </button>
   <button onclick="updateUser()">Update </button>
-  <script>
+  <button onclick="getUser()">Get </button>
+
+<script>
     function createUser() {
       const data = {
         // Your data to be sent in the POST request body
@@ -70,6 +72,21 @@
         console.error("Error:", error);
         });};
     
+    function getUser(){
+        
+        fetch("http://localhost:3300", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log("Response from server:", data);
+        })
+        .catch((error) => {
+        console.error("Error:", error);
+        });};
   </script>
 </body>
 </html>

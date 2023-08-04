@@ -11,7 +11,8 @@ let deck = new Deck();
 let p1 = new Player();
 deck.generate();
 deck.shuffle();
-p1.getMoney();
+p1.setMoney();
+p1.printMoney();
 /*
 console.log("receba");
 p1.receive(deck.deal());
