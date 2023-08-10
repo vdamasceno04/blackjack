@@ -11,8 +11,15 @@ let deck = new Deck();
 let p1 = new Player();
 deck.generate();
 deck.shuffle();
-p1.setMoney();
-p1.printMoney();
+async function main() {
+    await p1.setMoney(); // Wait for setMoney to complete before proceeding
+    p1.printMoney();     // This will be called after setMoney has completed
+}
+main();
+//p1.setMoney();
+//p1.printMoney(); // This will be called after setMoney has completed
+
+
 /*
 console.log("receba");
 p1.receive(deck.deal());
